@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { AuthenticateService } from '../core/services/authenticate.service';
+import { AuthenticateService } from 'src/app/core/services/authenticate.service';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginComponent implements OnInit {
   formGroup: FormGroup;
   validationMessages = {
     email: [
@@ -31,11 +31,11 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticateService
-  ) { }
-
-  ngOnInit() {
+  ) {
     this.generateForm();
   }
+
+  ngOnInit() {}
 
   generateForm() {
     this.formGroup = this.formBuilder.group({
@@ -50,8 +50,9 @@ export class LoginPage implements OnInit {
     });
   }
 
-  signIn() {
+  logIn() {
     this.authService.logIn(this.formGroup.value);
   }
+
 
 }
