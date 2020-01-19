@@ -3,7 +3,7 @@
     <img src="assets/img/PlatziMusic.png" alt="Logo PlatziMusic">
   </figure>
   <ion-row class="ion-justify-content-center ion-padding">
-    <form [formGroup]="formGroup" (ngSubmit)="signIn()">
+    <form class="auth-form" [formGroup]="formGroup" (ngSubmit)="register()">
       <ion-item>
         <ion-label position="floating">Email</ion-label>
         <ion-input 
@@ -44,14 +44,7 @@
         color="success"
         type="submit"
         [disabled]="formGroup.invalid">
-        Log In
-      </ion-button>
-      <ion-button
-        expand="full"
-        fill="outline"
-        shape="round"
-        color="success">
-        Sign Up
+        Register
       </ion-button>
     </form>
   </ion-row>

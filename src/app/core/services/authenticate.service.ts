@@ -18,6 +18,7 @@ export class AuthenticateService {
     return this.ngAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
     .then(_ => {
       this.log('Successful Register.');
+      this.navCtrl.navigateForward('/auth/login');
     })
     .catch(error => {
       this.log(error.message);

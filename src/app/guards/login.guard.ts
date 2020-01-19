@@ -18,7 +18,7 @@ export class LoginGuard implements CanActivate {
       tap(user => {
         if (user === null) {
           this.authService.log('User is not authenticated.');
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/auth/login');
         }
       }),
       map(user => user !== null)
