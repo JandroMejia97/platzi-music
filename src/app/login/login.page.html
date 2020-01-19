@@ -1,0 +1,56 @@
+<ion-content>
+  <figure class="ion-text-center ion-padding">
+    <img src="assets/img/PlatziMusic.png" alt="Logo PlatziMusic">
+  </figure>
+  <ion-row class="ion-justify-content-center ion-padding">
+    <form [formGroup]="formGroup" (ngSubmit)="signIn()">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input 
+          required
+          autocomplete
+          type="text"
+          formControlName="email"
+          placeholder="Enter your email.">
+        </ion-input>
+      </ion-item>
+      <div class="ion-padding-start">
+        <ng-container class="ion-padding" *ngFor="let error of validationMessages.email">
+          <ion-text *ngIf="formGroup.get('email').hasError(error.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)" color="danger">
+            <p>{{ error.message }}</p>
+          </ion-text>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input 
+          required
+          autocomplete
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password.">
+        </ion-input>
+      </ion-item>
+      <div class="ion-padding-start">
+        <ng-container class="ion-padding" *ngFor="let error of validationMessages.password">
+          <ion-text *ngIf="formGroup.get('password').hasError(error.type) && (formGroup.get('password').dirty || formGroup.get('password').touched)" color="danger">
+            <p>{{ error.message }}</p>
+          </ion-text>
+        </ng-container>
+      </div>
+      <ion-button
+        expand="full"
+        shape="round"
+        color="success"
+        type="submit"
+        [disabled]="formGroup.invalid">
+        Log In
+      </ion-button>
+    </form>
+  </ion-row>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" fill="outline" shape="round" color="success">
+    Sign Up
+  </ion-button>
+</ion-footer>

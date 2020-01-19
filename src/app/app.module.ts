@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,8 +22,10 @@ import { AppRoutingModule } from './app-routing.module';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
+    AngularFireAuthModule,
     IonicModule.forRoot(),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase, 'platzi-music')
   ],
   providers: [
     StatusBar,
