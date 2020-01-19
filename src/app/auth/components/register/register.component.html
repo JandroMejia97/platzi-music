@@ -5,6 +5,40 @@
   <ion-row class="ion-justify-content-center ion-padding">
     <form class="auth-form" [formGroup]="formGroup" (ngSubmit)="register()">
       <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input 
+          required
+          autocomplete
+          type="text"
+          formControlName="firstName"
+          placeholder="Enter your first name.">
+        </ion-input>
+      </ion-item>
+      <div class="ion-padding-start">
+        <ng-container class="ion-padding" *ngFor="let error of validationMessages.firstName">
+          <ion-text *ngIf="formGroup.get('firstName').hasError(error.type) && (formGroup.get('firstName').dirty || formGroup.get('firstName').touched)" color="danger">
+            <p>{{ error.message }}</p>
+          </ion-text>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input 
+          required
+          autocomplete
+          type="text"
+          formControlName="lastName"
+          placeholder="Enter your last name.">
+        </ion-input>
+      </ion-item>
+      <div class="ion-padding-start">
+        <ng-container class="ion-padding" *ngFor="let error of validationMessages.lastName">
+          <ion-text *ngIf="formGroup.get('lastName').hasError(error.type) && (formGroup.get('lastName').dirty || formGroup.get('lastName').touched)" color="danger">
+            <p>{{ error.message }}</p>
+          </ion-text>
+        </ng-container>
+      </div>
+      <ion-item>
         <ion-label position="floating">Email</ion-label>
         <ion-input 
           required
@@ -23,13 +57,22 @@
       </div>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input 
+        <ion-input
           required
           autocomplete
-          type="password"
+          passwordInput
+          [type]="isShowedPassword ? 'text' : 'password'"
           formControlName="password"
           placeholder="Enter your password.">
         </ion-input>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="default"
+          class="ion-align-self-end"
+          (click)="hiddenToggle()">
+          <ion-icon [name]="isShowedPassword ? 'eye-off': 'eye'"></ion-icon>
+        </ion-button>
       </ion-item>
       <div class="ion-padding-start">
         <ng-container class="ion-padding" *ngFor="let error of validationMessages.password">

@@ -9,6 +9,7 @@ import { AuthenticateService } from 'src/app/core/services/authenticate.service'
 })
 export class RegisterComponent implements OnInit {
   formGroup: FormGroup;
+  isShowedPassword = false;
   validationMessages = {
     email: [
       {
@@ -25,6 +26,28 @@ export class RegisterComponent implements OnInit {
       {
         type: 'minlength', message: 'The password must have at least 8 characters.'
       }
+    ],
+    firstName: [
+      {
+        type: 'required', message: 'First name is required.'
+      },
+      {
+        type: 'minlength', message: 'First name must have at least 5 characters.'
+      },
+      {
+        type: 'maxlength', message: 'The name must be less than 30 characters.'
+      }
+    ],
+    lastName: [
+      {
+        type: 'required', message: 'Last name is required.'
+      },
+      {
+        type: 'minlength', message: 'Last name must have at least 5 characters.'
+      },
+      {
+        type: 'maxlength', message: 'The last name must be less than 30 characters.'
+      }
     ]
   };
 
@@ -39,6 +62,16 @@ export class RegisterComponent implements OnInit {
 
   generateForm() {
     this.formGroup = this.formBuilder.group({
+      firstName: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30)
+      ])),
+      lastName: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(30)
+      ])),
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.email
@@ -52,5 +85,9 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.authService.signIn(this.formGroup.value);
+  }
+
+  hiddenToggle() {
+    this.isShowedPassword = !this.isShowedPassword;
   }
 }
