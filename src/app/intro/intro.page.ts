@@ -20,32 +20,29 @@ export class IntroPage implements OnInit {
   slides: Slide[] = [
     {
       icon: 'play-circle',
-      title: 'Ut enim ad minim veniam',
-      subtitle: 'Quis nostrud exercitation ullamco laboris.',
+      title: 'Play your music',
+      subtitle: 'ANYWHERE.',
       imageSrc: 'assets/img/PlatziMusic.png',
       description: `
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        The best albums, the best songs. Listen and share at any time, at all hours.
       `
     },
     {
       icon: 'videocam',
-      title: 'Ut enim ad minim veniam',
-      subtitle: 'Quis nostrud exercitation ullamco laboris.',
+      title: 'Enjoy our player',
+      subtitle: 'OF INCREDIBLE VIDEOS',
       imageSrc: 'assets/img/PlatziMusic.png',
       description: `
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Enter the video mode of our player and get access to clips, documentaries and making incredible offs of your favorite artist.
       `
     },
     {
-      icon: 'thumbs-up',
-      title: 'Ut enim ad minim veniam',
-      subtitle: 'Quis nostrud exercitation ullamco laboris.',
+      icon: 'bycicle',
+      title: 'Access the exclusive',
+      subtitle: 'SPORTS MODE',
       imageSrc: 'assets/img/PlatziMusic.png',
       description: `
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Create a playlist based on your physical activity. Have reports and access to what you need, integrated with GPS!
       `
     }
   ];
