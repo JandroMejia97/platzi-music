@@ -30,6 +30,14 @@
           formControlName="password"
           placeholder="Enter your password.">
         </ion-input>
+        <ion-button
+          slot="end"
+          fill="clear"
+          size="default"
+          class="ion-align-self-end"
+          (click)="hiddenToggle()">
+          <ion-icon [name]="isShowedPassword ? 'eye-off': 'eye'"></ion-icon>
+        </ion-button>
       </ion-item>
       <div class="ion-padding-start">
         <ng-container class="ion-padding" *ngFor="let error of validationMessages.password">

@@ -9,6 +9,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
   formGroup: FormGroup;
+  isShowedPassword = false;
   validationMessages = {
     email: [
       {
@@ -54,5 +55,8 @@ export class LoginComponent implements OnInit {
     this.authService.logIn(this.formGroup.value);
   }
 
+  hiddenToggle() {
+    this.isShowedPassword = !this.isShowedPassword;
+  }
 
 }
