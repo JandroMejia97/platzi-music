@@ -1,0 +1,9 @@
+<h1>Artists</h1>
+<ion-slides [options]="slideOpts" *ngIf="artists.length">
+  <ion-slide *ngFor="let artist of artists">
+    <ion-avatar (click)="selectedArtist.emit(artist)">
+      <img [src]="artist.images[0].url" alt="">
+      <span>{{ artist.name }}</span>
+    </ion-avatar>
+  </ion-slide>
+</ion-slides>

@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { ArtistListComponent } from './components/artist-list/artist-list.component';
+import { AlbumListComponent } from './components/album-list/album-list.component';
+import { SongListComponent } from './components/song-list/song-list.component';
+import { SongsModalComponent } from './components/songs-modal/songs-modal.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   imports: [
@@ -18,6 +23,16 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    PlayerComponent,
+    SongListComponent,
+    AlbumListComponent,
+    ArtistListComponent,
+    SongsModalComponent
+  ],
+  entryComponents: [
+    SongsModalComponent
+  ]
 })
 export class HomePageModule { }

@@ -37,7 +37,7 @@ export class IntroPage implements OnInit {
       `
     },
     {
-      icon: 'bycicle',
+      icon: 'bicycle',
       title: 'Access the exclusive',
       subtitle: 'SPORTS MODE',
       imageSrc: 'assets/img/PlatziMusic.png',
@@ -57,7 +57,7 @@ export class IntroPage implements OnInit {
 
   finish() {
     this.storage.set('isIntroShowed', true);
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/menu/home');
   }
 
 }

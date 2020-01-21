@@ -1,0 +1,9 @@
+<h1>Songs</h1>
+<ion-slides [options]="slideOpts" *ngIf="songs.length">
+  <ion-slide *ngFor="let song of songs">
+    <ion-avatar class="square-avatar" (click)="selectedSong.emit(song)">
+      <img [src]="song.images[0].url" alt="">
+      <span>{{ song.name }}</span>
+    </ion-avatar>
+  </ion-slide>
+</ion-slides>

@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from '../environments/environment';
+import { SongsModalPageModule } from './songs-modal/songs-modal.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { environment } from '../environments/environment';
     CoreModule,
     BrowserModule,
     AppRoutingModule,
+    SongsModalPageModule,
     AngularFireAuthModule,
     IonicModule.forRoot(),
     AngularFireDatabaseModule,

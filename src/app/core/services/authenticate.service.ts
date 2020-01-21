@@ -37,7 +37,7 @@ export class AuthenticateService {
     return this.ngAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
     .then(_ => {
       this.log('Successful Income.');
-      this.navCtrl.navigateForward('/home');
+      this.navCtrl.navigateForward('/menu/home');
     })
     .catch(error => {
       this.log(error.message);
