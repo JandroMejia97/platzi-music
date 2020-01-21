@@ -14,7 +14,7 @@ export class PlayerComponent {
 
   constructor() { }
 
-  parseTime(time: string = '00.00') {
+  parseTime(time: number = 0.00): string {
     if (time) {
       const partTime = parseInt(time.toString().split('.')[0], 10);
       let minutes = Math.floor(partTime / 60).toString();
@@ -23,6 +23,7 @@ export class PlayerComponent {
       seconds = seconds.length === 1 ? `0${seconds}` : seconds;
       return `${minutes}:${seconds}`;
     }
+    return '00:00';
   }
 
 }

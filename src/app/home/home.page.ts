@@ -77,7 +77,7 @@ export class HomePage {
     if (this.song.preview_url) {
       this.currentSong.play();
       this.currentSong.addEventListener('timeupdate', () => {
-        this.newTime = (this.currentSong.currentTime * this.currentSong.duration / 10) / 100;
+        this.newTime = (this.currentSong.currentTime / this.currentSong.duration);
       });
       this.song.playing = true;
     } else {
