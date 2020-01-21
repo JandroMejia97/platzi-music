@@ -14,8 +14,8 @@ export class HomePage {
   songs: any[] = [];
   albums: any[] = [];
   song: any;
-  currentSong: any;
-  newTime: any;
+  currentSong: HTMLAudioElement;
+  newTime: number;
   slideOpts = {
     initialSlide: 1,
     slidesPerView: 3,

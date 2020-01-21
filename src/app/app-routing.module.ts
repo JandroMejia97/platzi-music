@@ -6,7 +6,7 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'menu/home',
+    redirectTo: 'menu',
     pathMatch: 'full'
   },
   {
@@ -22,6 +22,7 @@ const routes: Routes = [
     canActivate: [LoginGuard, IntroGuard],
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
+
 ];
 
 @NgModule({

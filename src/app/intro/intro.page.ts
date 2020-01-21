@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { Slide } from 'src/app/core/models/slide.model';
@@ -9,7 +9,7 @@ import { Slide } from 'src/app/core/models/slide.model';
   templateUrl: './intro.page.html',
   styleUrls: ['./intro.page.scss'],
 })
-export class IntroPage implements OnInit {
+export class IntroPage {
   slideOptions: any = {
     initialSlide: 0,
     slidesPerView: 1,
@@ -52,12 +52,9 @@ export class IntroPage implements OnInit {
     private storage: Storage
   ) { }
 
-  ngOnInit() {
-  }
-
   finish() {
     this.storage.set('isIntroShowed', true);
-    this.router.navigateByUrl('/menu/home');
+    this.router.navigateByUrl('/auth');
   }
 
 }
