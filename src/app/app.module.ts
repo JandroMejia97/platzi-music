@@ -16,6 +16,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AgmCoreModule } from '@agm/core';
 
 import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,8 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     IonicStorageModule.forRoot(),
     AgmCoreModule.forRoot({apiKey: environment.googleMaps.apiKey}),
-    AngularFireModule.initializeApp(environment.firebase, 'platzi-music')
+    AngularFireModule.initializeApp(environment.firebase, 'platzi-music'),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
