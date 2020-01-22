@@ -38,16 +38,16 @@ export class HomePage {
   }
 
   async showArtistSongs(artist: any) {
-    await this.songService.getArtistTopTracks(artist.id).subscribe(async resp => {
-      const songs = resp;
-      this.showModal(artist, 'Top Tracks', songs.tracks);
+    this.songService.getArtistTopTracks(artist.id).subscribe(async resp => {
+      const songs = resp.tracks.filter((item: any) => item.preview_url);
+      this.showModal(artist, 'Top Tracks', songs);
     });
   }
 
   async showAlbumSongs(album: any) {
-    await this.songService.getAlbumTracks(album.id).subscribe(async resp => {
-      const songs = resp;
-      this.showModal(album, 'Album Tracks', songs.items);
+    this.songService.getAlbumTracks(album.id).subscribe(async resp => {
+      const songs = resp.items;
+      this.showModal(album, 'Album Tracks', songs);
     });
   }
 
@@ -66,7 +66,11 @@ export class HomePage {
         if (this.currentSong) {
           this.pause();
         }
-        this.currentSong = new Audio(this.song.preview_url);
+        if (this.song.preview_url) {
+          this.currentSong = new Audio(this.song.preview_url);
+        } else {
+          this.messageService.openToast('This song does not have a preview URL.');
+        }
         this.newTime = 0;
       }
     });
@@ -74,15 +78,11 @@ export class HomePage {
   }
 
   play() {
-    if (this.song.preview_url) {
       this.currentSong.play();
       this.currentSong.addEventListener('timeupdate', () => {
         this.newTime = (this.currentSong.currentTime / this.currentSong.duration);
       });
       this.song.playing = true;
-    } else {
-      this.messageService.openToast('This song does not have a preview URL.');
-    }
   }
 
   pause() {

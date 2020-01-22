@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sports</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <agm-map 
+    *ngIf="currentCenter"
+    [zoom]="defaultZoom"
+    [latitude]="currentCenter.latitude"
+    [longitude]="currentCenter.longitude">
+    <agm-marker
+      [latitude]="currentCenter.latitude"
+      [longitude]="currentCenter.longitude"
+      iconUrl="assets/img/bicycle.png">
+    </agm-marker>
+    <agm-polyline [strokeColor]="'red'" *ngIf="coordinates">
+      <agm-polyline-point 
+        *ngFor="let coordinate of coordinates"
+        [latitude]="coordinate.latitude"
+        [longitude]="coordinate.longitude"></agm-polyline-point>
+    </agm-polyline>
+  </agm-map>
+  <div class="ion-padding">
+    <ion-searchbar (keyup)="getTracks($event.target.value)"></ion-searchbar>
+
+    <h2>Tracks</h2>
+
+    <div class="ion-text-center" *ngIf="searching">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+    
+    <div *ngIf="!songs || songs.length === 0">
+      <h3>Opps! There are no songs.</h3>
+      <ion-text>
+        {{ text }}
+      </ion-text>
+    </div>
+
+    <ion-virtual-scroll 
+      [items]="songs"
+      *ngIf="songs">
+      <ion-item *virtualItem="let song">
+        {{ song.name }}
+        <ion-buttons slot="end">
+          <ion-button (click)="pause()" *ngIf="song.playing">
+            <ion-icon name="pause"></ion-icon>
+          </ion-button>
+          <ion-button *ngIf="song.playing">
+            <ion-spinner name="dots"></ion-spinner>
+          </ion-button>
+          <ion-button (click)="play(song)" *ngIf="!song.playing">
+            <ion-icon name="play"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-virtual-scroll>
+  </div>
+</ion-content>

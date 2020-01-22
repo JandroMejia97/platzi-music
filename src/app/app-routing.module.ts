@@ -22,7 +22,6 @@ const routes: Routes = [
     canActivate: [LoginGuard, IntroGuard],
     loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
-
 ];
 
 @NgModule({

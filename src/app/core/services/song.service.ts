@@ -24,4 +24,8 @@ export class SongService {
     getAlbumTracks(albumId) {
         return this.http.get<any>(`${this.apiUrl}/albums/${albumId}/tracks?country=AR`);
     }
+
+    searchTracks(keywords) {
+        return this.http.get<any>(`${this.apiUrl}/search?q=${keywords}&type=track`);
+    }
 }
