@@ -12,6 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AgmCoreModule } from '@agm/core';
 
@@ -27,6 +28,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppRoutingModule,
     AngularFireAuthModule,
     IonicModule.forRoot(),
+    AngularFireStorageModule,
     AngularFireDatabaseModule,
     IonicStorageModule.forRoot(),
     AgmCoreModule.forRoot({apiKey: environment.googleMaps.apiKey}),

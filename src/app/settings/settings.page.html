@@ -7,25 +7,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-text-center">
-  <div class="success-background ion-padding">
-    <ion-avatar (click)="takePhoto()">
-      <img src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder.jpg" *ngIf="!photo" alt="">
-      <img [src]="photo" *ngIf="photo" alt="">
-    </ion-avatar>
-    <h1>Alejandro Mejía</h1>
-    <h2>alejandromejia2013.27@gmail.com</h2>
-    <ion-grid>
-      <ion-row class="ion-align-items-center ion-text-center row-header">
-        <ion-col>140</ion-col>
-        <ion-col>2K</ion-col>
-        <ion-col>500</ion-col>
-      </ion-row>
-      <ion-row class="ion-align-items-center ion-text-center">
-        <ion-col>Artists</ion-col>
-        <ion-col>Followers</ion-col>
-        <ion-col>Songs</ion-col>
-      </ion-row>
-    </ion-grid>
+<ion-content>
+  <div class="container" *ngIf="user">
+    <div class="user-info">
+      <ion-avatar (click)="takePhoto()">
+        <img 
+          [alt]="user.displayName + ', Profile Picture'"
+          [src]="user.photoURL ? user.photoURL : 'https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder.jpg'">
+        <div class="load" *ngIf="uploadProgress$ | async as uploadProgress">
+          <ion-spinner *ngIf="uploadProgress > 0 && uploadProgress < 100" color="light" name="crescent"></ion-spinner>
+        </div>
+      </ion-avatar>
+      <h1>{{ user.displayName }}</h1>
+      <h2>{{ user.email }}</h2>
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-text-center row-header">
+          <ion-col>140</ion-col>
+          <ion-col>2K</ion-col>
+          <ion-col>500</ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-text-center">
+          <ion-col>Artists</ion-col>
+          <ion-col>Followers</ion-col>
+          <ion-col>Songs</ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
   </div>
 </ion-content>
